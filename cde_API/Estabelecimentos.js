@@ -83,7 +83,7 @@ async function recupereUm (cnpj)
                             "WHERE CNPJ = ?";
         const  dados   = [cnpj];
         const [linhas] = await conexao.execute(sql,dados);
-        return linhas;
+        return linhas.length > 0 ? linhas[0] : {};
     }
     catch (excecao)
     {
