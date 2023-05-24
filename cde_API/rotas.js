@@ -18,9 +18,7 @@ async function inclusao (req, res)
     let estabelecimento;
     try
     {
-        estabelecimento = Estabelecimento.novo (req.body.nome, req.body.categoria, req.body.telefone,
-            req.body.email, req.body.site, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero,
-            req.body.cep, req.body.cardapio);
+        estabelecimento = Estabelecimento.novo(req.body.nome, req.body.categoria, req.body.telefone, req.body.email, req.body.site, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero, req.body.cep, req.body.cardapio);
     }
     catch (excecao)
     {
@@ -54,7 +52,7 @@ async function atualizacao (req, res)
 {
     if (Object.values(req.body).length!=11 || !req.body.nome || !req.body.categoria || !req.body.telefone || 
     !req.body.email || !req.body.site || !req.body.horario || !req.body.cnpj || !req.body.complemento || 
-    !req.body.cep || !req.body.cardapio )
+    !req.body.numero || !req.body.cep || !req.body.cardapio )
     {
         const erro = Comunicado.novo('DdI','Dados inesperados','Não foram fornecidos exatamente as 3 informações esperadas de um estabelecimento (codigo atual, novo nome e novo preço)').object;
         return res.status(422).json(erro);
@@ -64,7 +62,7 @@ async function atualizacao (req, res)
     try
     {
         estabelecimento = Estabelecimento.novo (req.body.nome, req.body.categoria, req.body.telefone,
-            req.body.email, req.body.site, req.body.horario, req.body.cnpj, req.body.complemento,
+            req.body.email, req.body.site, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero,
             req.body.cep, req.body.cardapio);
     }
     catch (excecao)
@@ -78,7 +76,7 @@ async function atualizacao (req, res)
     if (codigo!=estabelecimento.cnpj)
     {
         const erro = Comunicado.novo('TMC','Mudança de código','Tentativa de mudar o código do estabelecimento').object;
-        return res.status(400).json(erro);    
+        return res.status(400).json(erro + codigo);    
     }
     
     let ret = await Estabelecimentos.recupereUm(codigo);

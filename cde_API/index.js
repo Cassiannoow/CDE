@@ -41,7 +41,7 @@ async function ativacaoDoServidor ()
     app.get   ('/estabelecimentos/:cnpj', rotas.recuperacaoDeUm);
     app.get   ('/estabelecimentos'        , rotas.recuperacaoDeTodos);
 
-    console.log ('Servidor ativo na porta 3000...');
-    app.listen(3000);
+    console.log ('Servidor ativo na porta 6143...');
+    app.listen(6143);
 }
 ativacaoDoServidor();

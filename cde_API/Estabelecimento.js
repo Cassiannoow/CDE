@@ -8,11 +8,11 @@ class Estabelecimento
     #horario
     #cnpj
     #complemento
+    #numero
     #cep
     #cardapio
-    #numero
 
-    constructor (nome, categoria, telefone, email, site, horario, cnpj, complemento, cep, cardapio, numero)
+    constructor (nome, categoria, telefone, email, site, horario, cnpj, complemento, numero, cep, cardapio)
     {
         this.nome  =nome;
         this.categoria = categoria; 
@@ -22,10 +22,9 @@ class Estabelecimento
         this.horario = horario;
         this.cnpj = cnpj;
         this.complemento = complemento;
+        this.numero = numero;
         this.cep = cep;
         this.cardapio = cardapio;
-        this.numero = numero;
-       
     }
 
     get nome ()
@@ -168,7 +167,7 @@ class Estabelecimento
 
     set cardapio (cardapio)
     {
-        if (cardapio === undefined || typeof cep !== 'string' ) // aprimorar 
+        if (cardapio === undefined || typeof cardapio !== 'string' ) // aprimorar 
             throw ('Cardapio Inválido');
 
         this.#cardapio = cardapio;
