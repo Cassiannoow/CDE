@@ -8,7 +8,7 @@ async function inclusao (req, res)
 {
     //nome, categoria, telefone, email, site, horario, cnpj, complemento, cep, cardapio, numero
     if (Object.values(req.body).length!=11 || !req.body.nome || !req.body.categoria || !req.body.telefone || 
-    !req.body.email || !req.body.site || !req.body.horario || !req.body.cnpj || !req.body.complemento || 
+    !req.body.email || !req.body.website || !req.body.horario || !req.body.cnpj || !req.body.complemento || 
     !req.body.cep || !req.body.cardapio )
     {
         const erro = Comunicado.novo('DdI','Dados inesperados','Não foram fornecidos exatamente as 3 informações esperadas de um estabelecimento (codigo, nome e preço)').object;
@@ -18,7 +18,7 @@ async function inclusao (req, res)
     let estabelecimento;
     try
     {
-        estabelecimento = Estabelecimento.novo(req.body.nome, req.body.categoria, req.body.telefone, req.body.email, req.body.site, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero, req.body.cep, req.body.cardapio);
+        estabelecimento = Estabelecimento.novo(req.body.nome, req.body.categoria, req.body.telefone, req.body.email, req.body.website, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero, req.body.cep, req.body.cardapio);
     }
     catch (excecao)
     {
@@ -27,6 +27,7 @@ async function inclusao (req, res)
     }
 
     const ret = await Estabelecimentos.inclua(estabelecimento);
+    console.log(ret)
 
     if (ret===null)
     {
@@ -51,7 +52,7 @@ async function inclusao (req, res)
 async function atualizacao (req, res)
 {
     if (Object.values(req.body).length!=11 || !req.body.nome || !req.body.categoria || !req.body.telefone || 
-    !req.body.email || !req.body.site || !req.body.horario || !req.body.cnpj || !req.body.complemento || 
+    !req.body.email || !req.body.website || !req.body.horario || !req.body.cnpj || !req.body.complemento || 
     !req.body.numero || !req.body.cep || !req.body.cardapio )
     {
         const erro = Comunicado.novo('DdI','Dados inesperados','Não foram fornecidos exatamente as 3 informações esperadas de um estabelecimento (codigo atual, novo nome e novo preço)').object;
@@ -62,7 +63,7 @@ async function atualizacao (req, res)
     try
     {
         estabelecimento = Estabelecimento.novo (req.body.nome, req.body.categoria, req.body.telefone,
-            req.body.email, req.body.site, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero,
+            req.body.email, req.body.website, req.body.horario, req.body.cnpj, req.body.complemento, req.body.numero,
             req.body.cep, req.body.cardapio);
     }
     catch (excecao)

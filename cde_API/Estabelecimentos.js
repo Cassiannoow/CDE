@@ -10,8 +10,9 @@ async function inclua (estabelecimento)
         const sql     = "INSERT INTO Estabelecimento (Nome, Categoria, Telefone, Email, WebSite, Horario, CNPJ, Complemento, Numero, CEP, Cardapio)" +
                         "VALUES " +
                         "(?,?,?,?,?,?,?,?,?,?,?)";
-        const dados   = [estabelecimento.nome, estabelecimento.categoria, estabelecimento.telefone, estabelecimento.email, estabelecimento.site, estabelecimento.horario, estabelecimento.cnpj, 
+        const dados   = [estabelecimento.nome, estabelecimento.categoria, estabelecimento.telefone, estabelecimento.email, estabelecimento.website, estabelecimento.horario, estabelecimento.cnpj, 
                         estabelecimento.complemento, estabelecimento.numero, estabelecimento.cep, estabelecimento.cardapio];
+        console.log(sql + dados)
         await conexao.query (sql, dados);
         return true;
     }
@@ -41,7 +42,7 @@ async function atualize (estabelecimento)
                         "Cardapio = ? " +
 
                         "WHERE CNPJ = ?";
-        const dados = [estabelecimento.nome, estabelecimento.categoria, estabelecimento.telefone, estabelecimento.email, estabelecimento.site, estabelecimento.horario,
+        const dados = [estabelecimento.nome, estabelecimento.categoria, estabelecimento.telefone, estabelecimento.email, estabelecimento.website, estabelecimento.horario,
             estabelecimento.complemento, estabelecimento.numero, estabelecimento.cep, estabelecimento.cardapio, estabelecimento.cnpj];
         await conexao.query (sql,dados);
         return true;

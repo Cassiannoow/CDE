@@ -1,5 +1,5 @@
 const mysql    = require("mysql2/promise");
-const bdConfig = 'mysql://k2t33bknqqhsplxgzq5u:pscale_pw_Wz229Ni4yBmjps9BxBSZY3EojfLoTvj8YxQhJVnRWZW@aws.connect.psdb.cloud/cde?ssl={"rejectUnauthorized":true}';
+const bdConfig = 'mysql://o4dcg449uqsxhwxvuzzp:pscale_pw_Oyrh5kTdsn3e8e26IrDX8DdV5QSkLrhods6tW1rleqX@aws.connect.psdb.cloud/cde?ssl={"rejectUnauthorized":true}';
 //require('./bdconfig.js');
 
 async function getConexao ()
